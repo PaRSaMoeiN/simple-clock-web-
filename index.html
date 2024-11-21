@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            font-family: 'Arial', sans-serif;
+        }
+
+        .clock-container {
+            text-align: center;
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .clock {
+            font-size: 3em;
+            color: #333;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .clock span {
+            animation: fadeIn 1s ease infinite;
+        }
+
+        @keyframes fadeIn {
+            0%, 100% {
+                opacity: 0.8;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="clock-container">
+        <div class="clock">
+            <span id="hours">00</span> :
+            <span id="minutes">00</span> :
+            <span id="seconds">00</span>
+        </div>
+    </div>
+    <script>
+        function updateClock() {
+            const now = new Date(); // دریافت زمان فعلی
+            const hours = String(now.getHours()).padStart(2, '0'); // ساعت
+            const minutes = String(now.getMinutes()).padStart(2, '0'); // دقیقه
+            const seconds = String(now.getSeconds()).padStart(2, '0'); // ثانیه
+
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+</body>
+</html>
